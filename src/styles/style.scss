@@ -1,0 +1,609 @@
+// ============================================================
+// 復職名人テーマ for GROWI v7
+// メインカラー: #1a661e（深い緑）を基調とした温かみのあるデザイン
+// ============================================================
+
+@use 'sass:color';
+
+// --- カラー変数定義 ---
+$color-main:        #1a661e;
+$color-main-light:  rgba(33, 128, 38, 0.05);
+$color-bg:          #faf5f0;
+$color-white:       #fff;
+$color-text:        #333;
+$color-link:        #1176d4;
+$color-accent-red:  #e44141;
+$color-accent-blue: #3d79d5;
+$color-light-red:   #fff2f0;
+$color-light-blue:  #f3f8fd;
+$color-border:      hsla(0, 0%, 78%, 0.5);
+$color-header-bg:   #fdfdfd;
+
+$font-family-base:  "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+
+// ============================================================
+// 1. グローバル / body
+// ============================================================
+
+body {
+  background-color: $color-bg !important;
+  color: $color-text !important;
+  font-family: $font-family-base !important;
+}
+
+// リンク
+a {
+  color: $color-link;
+
+  &:hover,
+  &:focus {
+    color: color.adjust($color-link, $lightness: -10%);
+    text-decoration: underline;
+  }
+}
+
+// ============================================================
+// 2. ヘッダー / ナビゲーション
+// ============================================================
+
+// Growi v7 のトップナビゲーションバー
+.grw-navigation-bar,
+#navigation-bar,
+.navbar,
+nav.grw-app-header {
+  background-color: $color-header-bg !important;
+  border-bottom: 1px solid $color-border !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+// ナビゲーションのリンク・アイコン
+.grw-navigation-bar a,
+.navbar a,
+.nav-link {
+  color: $color-text !important;
+
+  &:hover,
+  &:focus,
+  &.active {
+    color: $color-main !important;
+    background-color: $color-main-light !important;
+    border-radius: 4px;
+  }
+}
+
+// ロゴエリア
+.grw-header-logo,
+.navbar-brand {
+  background-color: transparent !important;
+}
+
+// ============================================================
+// 3. サイドバー
+// ============================================================
+
+// サイドバー全体
+.grw-sidebar,
+#grw-sidebar,
+.grw-sidebar-nav {
+  background-color: $color-white !important;
+  border-right: 1px solid $color-border !important;
+}
+
+// サイドバーのリンク
+.grw-sidebar a,
+.grw-sidebar-nav a,
+.grw-page-tree-item a {
+  color: $color-text !important;
+
+  &:hover,
+  &:focus {
+    color: $color-main !important;
+    background-color: $color-main-light !important;
+  }
+}
+
+// アクティブなページ項目: 左ボーダーで強調
+.grw-page-tree-item.active > a,
+.grw-page-tree-item-children .active > a,
+.grw-sidebar .active > a {
+  color: $color-main !important;
+  background-color: $color-main-light !important;
+  border-left: 3px solid $color-main !important;
+  padding-left: calc(0.75rem - 3px) !important;
+  font-weight: 600;
+}
+
+// サイドバーのアイコン
+.grw-sidebar .grw-navigation-icon,
+.grw-sidebar-nav .nav-icon {
+  color: $color-text;
+
+  &:hover {
+    color: $color-main;
+  }
+}
+
+// ============================================================
+// 4. コンテンツエリア（wiki 本文）
+// ============================================================
+
+// メインコンテンツの外枠
+.grw-page-content-container,
+.page-content,
+#wiki-content {
+  background-color: $color-white !important;
+  border-radius: 4px !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07) !important;
+}
+
+// wiki 本文内テキスト
+.wiki,
+.markdown-body {
+  color: $color-text;
+  font-family: $font-family-base;
+  line-height: 1.8;
+
+  // --- 見出し ---
+  h1, h2, h3, h4, h5, h6 {
+    color: $color-main;
+    font-family: $font-family-base;
+    font-weight: 700;
+    margin-top: 1.6em;
+    margin-bottom: 0.6em;
+  }
+
+  h1 {
+    border-bottom: 2px solid $color-main;
+    padding-bottom: 0.25em;
+    font-size: 1.75em;
+  }
+
+  h2 {
+    border-left: 4px solid $color-main;
+    padding-left: 0.6em;
+    font-size: 1.4em;
+  }
+
+  h3 {
+    font-size: 1.2em;
+    border-bottom: 1px solid $color-border;
+    padding-bottom: 0.2em;
+  }
+
+  h4 { font-size: 1.05em; }
+  h5 { font-size: 1em; }
+  h6 { font-size: 0.95em; color: color.adjust($color-text, $lightness: 20%); }
+
+  // --- リンク ---
+  a {
+    color: $color-link;
+
+    &:hover {
+      color: color.adjust($color-link, $lightness: -10%);
+      text-decoration: underline;
+    }
+  }
+
+  // --- コードインライン ---
+  code {
+    background-color: $color-bg;
+    border: 1px solid $color-border;
+    border-radius: 3px;
+    padding: 0.1em 0.35em;
+    font-size: 0.875em;
+    color: $color-main;
+  }
+
+  // --- コードブロック ---
+  pre {
+    background-color: $color-bg !important;
+    border: 1px solid $color-border;
+    border-radius: 4px;
+    padding: 1em;
+
+    code {
+      background-color: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      color: $color-text;
+    }
+  }
+
+  // --- テーブル ---
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1em 0;
+
+    th {
+      background-color: $color-bg;
+      color: $color-text;
+      font-weight: 600;
+      border: 1px solid $color-border;
+      padding: 0.5em 0.75em;
+    }
+
+    td {
+      border: 1px solid $color-border;
+      padding: 0.5em 0.75em;
+    }
+
+    tr:nth-child(even) td {
+      background-color: rgba(250, 245, 240, 0.5);
+    }
+
+    tr:hover td {
+      background-color: $color-main-light;
+    }
+  }
+
+  // --- 引用 ---
+  blockquote {
+    border-left: 4px solid $color-main;
+    background-color: $color-main-light;
+    padding: 0.75em 1em;
+    margin: 1em 0;
+    border-radius: 0 4px 4px 0;
+    color: color.adjust($color-text, $lightness: 10%);
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // --- 水平線 ---
+  hr {
+    border: none;
+    border-top: 2px solid $color-border;
+    margin: 2em 0;
+  }
+
+  // --- リスト ---
+  ul, ol {
+    padding-left: 1.5em;
+    line-height: 1.8;
+  }
+
+  li + li {
+    margin-top: 0.25em;
+  }
+
+  // --- 画像 ---
+  img {
+    max-width: 100%;
+    border-radius: 4px;
+  }
+}
+
+// ============================================================
+// 5. ボタン
+// ============================================================
+
+// プライマリボタン（緑）
+.btn-primary,
+.btn-success {
+  background-color: $color-main !important;
+  border-color: $color-main !important;
+  color: $color-white !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: color.adjust($color-main, $lightness: -8%) !important;
+    border-color: color.adjust($color-main, $lightness: -8%) !important;
+  }
+
+  &:disabled,
+  &.disabled {
+    background-color: color.adjust($color-main, $lightness: 30%) !important;
+    border-color: color.adjust($color-main, $lightness: 30%) !important;
+  }
+}
+
+// セカンダリボタン（白地に緑ボーダー）
+.btn-outline-primary,
+.btn-outline-success {
+  background-color: $color-white !important;
+  border-color: $color-main !important;
+  color: $color-main !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $color-main-light !important;
+    color: $color-main !important;
+  }
+}
+
+// 危険ボタン（アクセント赤）
+.btn-danger {
+  background-color: $color-accent-red !important;
+  border-color: $color-accent-red !important;
+  color: $color-white !important;
+
+  &:hover,
+  &:focus {
+    background-color: color.adjust($color-accent-red, $lightness: -8%) !important;
+    border-color: color.adjust($color-accent-red, $lightness: -8%) !important;
+  }
+}
+
+// ============================================================
+// 6. アラート / バッジ
+// ============================================================
+
+.alert-success {
+  background-color: $color-main-light !important;
+  border-color: $color-main !important;
+  color: color.adjust($color-main, $lightness: -5%) !important;
+}
+
+.alert-danger,
+.alert-error {
+  background-color: $color-light-red !important;
+  border-color: $color-accent-red !important;
+  color: color.adjust($color-accent-red, $lightness: -10%) !important;
+}
+
+.alert-info {
+  background-color: $color-light-blue !important;
+  border-color: $color-accent-blue !important;
+  color: color.adjust($color-accent-blue, $lightness: -10%) !important;
+}
+
+.alert-warning {
+  background-color: #fff8e1 !important;
+  border-color: #f5a623 !important;
+  color: #7a5300 !important;
+}
+
+// バッジ
+.badge-success,
+.bg-success {
+  background-color: $color-main !important;
+}
+
+.badge-danger,
+.bg-danger {
+  background-color: $color-accent-red !important;
+}
+
+.badge-info,
+.bg-info {
+  background-color: $color-accent-blue !important;
+}
+
+// ============================================================
+// 7. フォーム要素
+// ============================================================
+
+.form-control,
+.form-select {
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  color: $color-text;
+  background-color: $color-white;
+
+  &:focus {
+    border-color: $color-main;
+    box-shadow: 0 0 0 0.2rem rgba(26, 102, 30, 0.2);
+    outline: none;
+  }
+}
+
+// ============================================================
+// 8. モーダル / ダイアログ
+// ============================================================
+
+.modal-header {
+  background-color: $color-main;
+  color: $color-white;
+  border-bottom: none;
+
+  .modal-title {
+    color: $color-white;
+  }
+
+  .btn-close,
+  .close {
+    color: $color-white;
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.modal-content {
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+// ============================================================
+// 9. ページ編集エリア
+// ============================================================
+
+// エディタ上部ツールバー
+.grw-editor-navbar,
+.grw-editor-header {
+  background-color: $color-header-bg !important;
+  border-bottom: 1px solid $color-border !important;
+}
+
+// エディタのタブ（Markdown / Preview 切替）
+.nav-tabs .nav-link.active {
+  color: $color-main !important;
+  border-bottom-color: $color-main !important;
+}
+
+// ============================================================
+// 10. 検索
+// ============================================================
+
+.search-form,
+.grw-search-box {
+  .form-control {
+    &:focus {
+      border-color: $color-main;
+      box-shadow: 0 0 0 0.2rem rgba(26, 102, 30, 0.2);
+    }
+  }
+}
+
+.search-result-item:hover,
+.grw-search-result-item:hover {
+  background-color: $color-main-light !important;
+}
+
+// ============================================================
+// 11. ページリスト / 子ページ一覧
+// ============================================================
+
+.grw-page-list-item,
+.page-list-item {
+  border-bottom: 1px solid $color-border;
+  padding: 0.5em 0;
+
+  &:hover {
+    background-color: $color-main-light;
+  }
+
+  a {
+    color: $color-link;
+
+    &:hover {
+      color: $color-main;
+    }
+  }
+}
+
+// ============================================================
+// 12. パンくずリスト
+// ============================================================
+
+.breadcrumb {
+  background-color: transparent;
+
+  .breadcrumb-item {
+    color: $color-text;
+
+    &.active {
+      color: $color-main;
+      font-weight: 600;
+    }
+
+    a {
+      color: $color-link;
+
+      &:hover {
+        color: $color-main;
+      }
+    }
+
+    + .breadcrumb-item::before {
+      color: color.adjust($color-text, $lightness: 40%);
+    }
+  }
+}
+
+// ============================================================
+// 13. スクロールバー（WebKit）
+// ============================================================
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: $color-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: color.adjust($color-main, $lightness: 35%);
+  border-radius: 3px;
+
+  &:hover {
+    background-color: $color-main;
+  }
+}
+
+// ============================================================
+// 14. その他 / ユーティリティ
+// ============================================================
+
+// 選択テキストのハイライト
+::selection {
+  background-color: rgba(26, 102, 30, 0.15);
+  color: $color-text;
+}
+
+// フォーカスリング（アクセシビリティ）
+:focus-visible {
+  outline: 2px solid $color-main;
+  outline-offset: 2px;
+}
+
+// カード系コンポーネント
+.card {
+  border: 1px solid $color-border;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+
+  .card-header {
+    background-color: $color-bg;
+    border-bottom: 1px solid $color-border;
+    font-weight: 600;
+  }
+}
+
+// ドロップダウン
+.dropdown-menu {
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  .dropdown-item {
+    color: $color-text;
+
+    &:hover,
+    &:focus {
+      background-color: $color-main-light;
+      color: $color-main;
+    }
+
+    &.active,
+    &:active {
+      background-color: $color-main;
+      color: $color-white;
+    }
+  }
+}
+
+// ページネーション
+.page-item {
+  &.active .page-link {
+    background-color: $color-main !important;
+    border-color: $color-main !important;
+    color: $color-white !important;
+  }
+
+  .page-link {
+    color: $color-main;
+
+    &:hover {
+      background-color: $color-main-light;
+      border-color: $color-border;
+      color: $color-main;
+    }
+  }
+}
+
+// トースト / 通知
+.grw-toast,
+.toast {
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
